@@ -1,0 +1,39 @@
+<div class="container shadow-lg p-3 mb-5 bg-white rounded">
+    <h1>Sign In</h1>
+    <form #F="ngForm" [formGroup]="ourForm" (ngSubmit)="submission()"> 
+    <!--the "ngForm" directive is used to capture the values of the form elements--> 
+      <div class="form-group">
+        <input [class.is-invalid]="ourForm.get('email')!.invalid && ourForm.get('email')!.touched" class="form-control" formControlName="email" type="text" placeholder="Email">
+        <div *ngIf="ourForm.get('email')!.invalid && ourForm.get('email')!.touched, else ourElse">
+          <small *ngIf="ourForm.get('email')!.errors?.required" class="text-danger">Email is required!</small>  
+        </div>
+        <ng-template #ourElse>
+          <small class="invisible">Email</small>
+        </ng-template>
+      </div>
+      
+      <div class="form-group">
+        <input [class.is-invalid]="ourForm.get('password')!.invalid && ourForm.get('password')!.touched" class="form-control" formControlName="password" type="password" placeholder="Password" >
+        <div *ngIf="ourForm.get('password')!.invalid && ourForm.get('password')!.touched, else ourElse">
+          <small *ngIf="ourForm.get('password')!.errors?.required" class="text-danger">Password is required!</small>  
+        </div>
+        <ng-template #ourElse>
+          <small class="invisible">Password</small>
+        </ng-template>
+      </div>
+      
+      <button [disabled]="F.form.invalid" class="container-fluid btn btn-secondary" type="submit">Submit</button>
+      <mat-progress-bar mode="indeterminate" *ngIf="loader" color="accent"></mat-progress-bar>
+      
+      <div *ngIf="!serverresult" >
+        <small class="text-danger">*Invalid email and/or password!</small>  
+      </div>
+      
+      <div class="form-group">
+        <small>Not signed up? <a routerLink="/signup" routerLinkActive="active">Sign Up</a></small>
+        <!--routerLinkActive is linked to the active css class -->  
+      </div>
+
+    </form>
+    <!--"{{ourForm.value|json}}" shows the values in json format-->
+</div>
