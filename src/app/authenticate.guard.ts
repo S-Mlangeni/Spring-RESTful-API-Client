@@ -10,9 +10,7 @@ export class AuthenticateGuard implements CanActivate {
   
   canActivate(): boolean {
     console.log(sessionStorage.getItem("serverResult"));
-    const val = Boolean(sessionStorage.getItem("serverResult"));
-    console.log(val);
-    if (val == true) {
+    if (sessionStorage.getItem("serverResult") === "true") {
       return true;
     } else {
       this.router.navigate(["/signin"]);
