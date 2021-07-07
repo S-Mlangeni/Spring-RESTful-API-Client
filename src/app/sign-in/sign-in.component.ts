@@ -36,6 +36,7 @@ export class SignInComponent implements OnInit {
   handlingresponse (response: any, ourpage: string) {
     this.loader = false;
     this.serverresult = response;
+    sessionStorage.setItem("serverResult", response);
     console.log("You are Successful! ", this.serverresult);
     if (this.serverresult) {
       this.router.navigate([ourpage]);
