@@ -27,7 +27,7 @@ export class SignUpComponent implements OnInit {
 
   submission() {
     this.loader = true;
-    console.log(this.ourForm.value);
+    //console.log(this.ourForm.value);
     this.ourservice.signingup(this.ourForm.value).subscribe(
       response => this.handlingRegistrationResponse(response),
       error => this.handlingErrorResponse(error)
@@ -35,7 +35,7 @@ export class SignUpComponent implements OnInit {
   }
 
   handlingRegistrationResponse (response: any, loginpage: string = '/signin'):void {
-    console.log("You are Successful! ", response);
+    //console.log("You are Successful! ", response);
     this.router.navigate([loginpage]);
 
   }

@@ -26,7 +26,7 @@ export class SignInComponent implements OnInit {
   submission(ourpage: string = '/firstpage'):void {
     //console.log(this.ourForm.value);
     this.loader = true;
-    console.log(this.ourForm.value);
+    //console.log(this.ourForm.value);
     this.ourservice.signingin(this.ourForm.value).subscribe(
       response => this.handlingresponse(response, ourpage),
       error => this.handlingErrorResponse(error)
@@ -37,7 +37,7 @@ export class SignInComponent implements OnInit {
     this.loader = false;
     this.serverresult = response;
     sessionStorage.setItem("serverResult", response);
-    console.log("You are Successful! ", this.serverresult);
+    //console.log("You are Successful! ", this.serverresult);
     if (this.serverresult) {
       this.router.navigate([ourpage]);
     }
